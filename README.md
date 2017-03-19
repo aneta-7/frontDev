@@ -1,10 +1,10 @@
-Aneta Stypa
+## Aneta Stypa
 
 
 
 
 
-#Run server
+Run server
 ```
 > npm install -g live-server
 > live-server
