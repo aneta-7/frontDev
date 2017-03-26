@@ -1,12 +1,14 @@
-function Song(json){
+var Song = (function(){
     var self = this;
-    self.title = json.title;
-    self.performer = json.performer;
-    self.publishing = json.publishing;
-    self.type = json.type;
-    self.year = json.year;
+    function Song(json){
+        self.title = json.title;
+        self.performer = json.performer;
+        self.publishing = json.publishing;
+        self.type = json.type;
+        self.year = json.year;
+    }
 
-    self.toTableRow = function(){
+    Song.prototype.toTableRow = function(){
         return '<tr><td>'
             + self.title        + '</td><td>'
             + self.performer    + '</td><td>'
@@ -14,7 +16,28 @@ function Song(json){
             + self.type         + '</td><td>'
             + self.year         + '</td></tr>'
     }
-}
+    return Song;
+})();
+
+
+// function Song(json){
+//     var self = this;
+
+//     self.title = json.title;
+//     self.performer = json.performer;
+//     self.publishing = json.publishing;
+//     self.type = json.type;
+//     self.year = json.year;
+
+//     self.toTableRow = function(){
+//         return '<tr><td>'
+//             + self.title        + '</td><td>'
+//             + self.performer    + '</td><td>'
+//             + self.publishing   + '</td><td>' 
+//             + self.type         + '</td><td>'
+//             + self.year         + '</td></tr>'
+//     }
+// }
 
 function toTableRow(position){
 
@@ -54,4 +77,3 @@ var listOfSongs = new ListOfPosition();
     var context = document.getElementById('table');
     context.innerHTML = listOfSongs.toTable();
 }
-
