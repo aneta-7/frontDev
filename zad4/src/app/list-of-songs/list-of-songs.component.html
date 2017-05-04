@@ -1,0 +1,3 @@
+<app-song-details *ngFor= "let song of listOfSongs" 
+[name]="song" 
+(clickEmitter)="userClicked($event)"></app-song-details>

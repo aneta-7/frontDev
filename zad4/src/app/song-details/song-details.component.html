@@ -1,0 +1,11 @@
+<div (click)="userSelected(name)">
+  Show details <a>{{name.title}}</a>
+    <div  *ngIf="name.showDetails">
+        <ul>
+            <li>                 {{name.performer}}</li>
+            <li>                 {{name.publishing}}</li>
+            <li>                 {{name.type}}</li>
+            <li>                 {{name.year}}</li>
+        </ul>
+    </div>
+  </div>
