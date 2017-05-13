@@ -1,0 +1,50 @@
+<!-- list all -->
+<app-song-details *ngFor= "let song of listOfSongs" 
+[name]="song" 
+(clickEmitter)="userClicked($event)">
+</app-song-details>
+
+<!-- create new song -->
+<br>
+<h3>Add new song </h3>
+
+<form [formGroup]="myForm" (ngSubmit)="submit(myForm.value)">
+    <input placeholder="Title" type="text"[formControl]="title"> 
+    <div *ngIf="title.hasError('required')">Title is required </div>
+    <br>
+    <input placeholder="Performer" type="text"[formControl]="performer">
+    <div *ngIf="performer.hasError('required')">Performer is required </div>
+    <br>
+    <input placeholder="Publishing" type="text"[formControl]="publishing">
+    <div *ngIf="publishing.hasError('required')">Publishing is required </div>
+    <br>
+    <input placeholder="Type" type="text"[formControl]="type">
+    <div *ngIf="type.hasError('required')">Type is required </div>
+    <br>
+    <input placeholder="Year" type="text"[formControl]="year">
+    <div *ngIf="year.hasError('minlength')">Year is too short </div>
+    <div *ngIf="year.hasError('maxlength')">Year is too long </div>
+    <div *ngIf="year.hasError('required')">Year is required </div>
+    <div *ngIf="year.hasError('onlyYear')">Only number ! </div>
+    
+  <button type="submit">OK</button>
+</form>
+
+<br><br>
+
+<h3>Search by title: </h3>
+<form [formGroup]="myForm" (ngSubmit)="search(myForm.value)">
+    <input type="search" [formControl]="searchSong">
+   
+    <button type="submit">Search</button>
+</form>
+
+<!-- search result -->
+Result:
+<ul>
+    <app-song-details *ngFor= "let song of searches" 
+    [name]="song" 
+    (clickEmitter)="userClicked($event)"></app-song-details>
+</ul>
+
+<br><br>

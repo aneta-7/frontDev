@@ -1,0 +1,23 @@
+<!-- edit -->
+<div (click)="edit(name)">
+    <form [formGroup]="mySong" (ngSubmit)="saveChange(mySong.value)">
+            <input value={{nameSong.title}} type="text"[formControl]="title"> 
+            <div *ngIf="title.hasError('required')">Title is required </div>
+            <br>
+            <input value={{nameSong.performer}} type="text"[formControl]="performer">
+            <div *ngIf="performer.hasError('required')">Performer is required </div>
+            <br>
+            <input value={{nameSong.publishing}} type="text"[formControl]="publishing">
+            <div *ngIf="publishing.hasError('required')">Publishing is required </div>
+            <br>
+            <input value={{nameSong.type}} type="text"[formControl]="type">
+            <div *ngIf="type.hasError('required')">Type is required </div>
+            <br>
+            <input value={{nameSong.year}} type="text"[formControl]="year">
+            <div *ngIf="year.hasError('minlength')">Year is too short </div>
+            <div *ngIf="year.hasError('maxlength')">Year is too long </div>
+            <div *ngIf="year.hasError('required')">Year is required </div>
+            
+            <button type="submit">Save change</button>
+    </form>
+</div>
