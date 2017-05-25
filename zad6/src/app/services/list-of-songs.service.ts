@@ -1,6 +1,8 @@
 import { Song } from '../models/index';
 import { FormControl } from '@angular/forms';
+import { Injectable} from '@angular/core';
 
+@Injectable()
 export class Add{
 
     constructor(){}

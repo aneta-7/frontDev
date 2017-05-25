@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { Song } from '../models/index';
 import { Add } from '../services/list-of-songs.service';
-
+import { ReflectiveInjector, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-list-of-songs',
@@ -14,7 +14,7 @@ export class ListOfSongsComponent implements OnInit {
   searchSong: FormControl;
   listOfSongs: Song[] = new Array<Song>();
   searches: Song[] = [];
-  adder: Add = new Add();
+  adder: Add;
 
   myForm: FormGroup;
   title: AbstractControl;
@@ -24,6 +24,9 @@ export class ListOfSongsComponent implements OnInit {
   year: AbstractControl;
 
   constructor(fb: FormBuilder) { 
+    const injector = ReflectiveInjector.resolveAndCreate([Add]);
+    this.adder = injector.get(Add);
+
     this.listOfSongs = this.adder.initialSongList();
     this.searchSong = new FormControl();
 

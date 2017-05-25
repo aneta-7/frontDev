@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Song } from '../models/index';
 import { FormControl, FormGroup,AbstractControl,Validators,FormBuilder} from '@angular/forms';
 import { Edit } from '../services/edit-song.service';
+import { ReflectiveInjector, Inject } from '@angular/core';
+
 
 @Component({
   selector: 'app-edit-song',
@@ -22,9 +24,13 @@ export class EditSongComponent implements OnInit {
   type: AbstractControl;
   year: AbstractControl;
 
-  editer: Edit = new Edit();
+  editer: Edit;
 
   constructor(fb: FormBuilder) {
+
+    const injector = ReflectiveInjector.resolveAndCreate([Edit]);
+    this.editer = injector.get(Edit);
+
      this.mySong = fb.group({
       'title': ['', Validators.required],
       'performer': ['',Validators.required],

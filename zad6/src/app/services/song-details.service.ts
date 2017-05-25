@@ -1,5 +1,7 @@
 import { Song } from '../models/index';
+import { Injectable} from '@angular/core';
 
+@Injectable()
 export class Details{
      constructor(){}
 
