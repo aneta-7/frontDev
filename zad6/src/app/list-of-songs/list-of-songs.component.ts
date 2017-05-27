@@ -56,7 +56,7 @@ export class ListOfSongsComponent implements OnInit {
 
   submit(value: any){
     let tmp = value;
-    this.adder.addNewSong(tmp,this.listOfSongs);
+    this.adder.addNewSong(tmp);
   }
 
   onlyNumbers(control: FormControl){
@@ -68,10 +68,10 @@ export class ListOfSongsComponent implements OnInit {
   }
 
   search(value: any){
-     this.searches = this.adder.search(this.searchSong,this.listOfSongs);
+     this.searches = this.adder.search(this.searchSong);
   }  
 
   delete(song:Song){
-    this.listOfSongs = this.adder.delete(this.listOfSongs,song);
+    this.listOfSongs = this.adder.delete(song);
   }
 }

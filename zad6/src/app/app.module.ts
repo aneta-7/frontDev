@@ -24,22 +24,7 @@ import { Song } from './models/index';
     HttpModule,
     ReactiveFormsModule
   ],
-  providers: [
-    {provide: 'ADD',
-     deps: [Add],
-     useFactory(add:Add){
-       let p : Song = new Song();
-       let list : Array<Song> = new Array<Song>();
-
-       p.title = `title`;
-       p.performer = `performer`;
-       p.publishing = 'publish';
-       p.type = 'typ';
-       p.year = 1234;
-
-      return add.addNewSong(p,list);
-    }}
-  ],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
