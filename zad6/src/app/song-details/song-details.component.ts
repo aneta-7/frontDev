@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Song } from '../models/index';
 import { FormControl, FormGroup,AbstractControl,Validators,FormBuilder} from '@angular/forms';
-import { Details } from '../services/song-details.service';
+import { DetailsService } from '../services/song-details.service';
 import { ReflectiveInjector, Inject } from '@angular/core';
 
 
@@ -18,11 +18,11 @@ export class SongDetailsComponent implements OnInit {
   @Output()
   clickEmitter: EventEmitter<Song> = new EventEmitter();
 
-  det: Details;
+  det: DetailsService;
 
   constructor() {
-    const injector = ReflectiveInjector.resolveAndCreate([Details]);
-    this.det = injector.get(Details);
+    const injector = ReflectiveInjector.resolveAndCreate([DetailsService]);
+    this.det = injector.get(DetailsService);
   }
 
   ngOnInit() {

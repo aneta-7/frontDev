@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Injectable} from '@angular/core';
 
 @Injectable()
-export class Add{
+export class AddService{
 
     constructor(){}
 
