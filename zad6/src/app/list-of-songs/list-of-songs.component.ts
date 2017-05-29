@@ -1,7 +1,8 @@
+import { AddService } from './../services/list-of-songs.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
 import { Song } from '../models/index';
-import { Add } from '../services/list-of-songs.service';
+
 import { ReflectiveInjector, Inject } from '@angular/core';
 
 @Component({
@@ -14,8 +15,7 @@ export class ListOfSongsComponent implements OnInit {
   searchSong: FormControl;
   listOfSongs: Song[] = new Array<Song>();
   searches: Song[] = [];
-  adder: Add;
-
+  
   myForm: FormGroup;
   title: AbstractControl;
   performer: AbstractControl;
@@ -23,11 +23,10 @@ export class ListOfSongsComponent implements OnInit {
   type: AbstractControl;
   year: AbstractControl;
 
-  constructor(fb: FormBuilder) { 
-    const injector = ReflectiveInjector.resolveAndCreate([Add]);
-    this.adder = injector.get(Add);
+  constructor(fb: FormBuilder, private addService:AddService) { 
+    
 
-    this.listOfSongs = this.adder.initialSongList();
+    this.listOfSongs = this.addService.initialSongList();
     this.searchSong = new FormControl();
 
     this.myForm = fb.group({
@@ -55,8 +54,7 @@ export class ListOfSongsComponent implements OnInit {
   }
 
   submit(value: any){
-    let tmp = value;
-    this.adder.addNewSong(tmp);
+    this.addService.addNewSong(value);
   }
 
   onlyNumbers(control: FormControl){
@@ -68,10 +66,10 @@ export class ListOfSongsComponent implements OnInit {
   }
 
   search(value: any){
-     this.searches = this.adder.search(this.searchSong);
+     this.searches = this.addService.search(this.searchSong);
   }  
 
   delete(song:Song){
-    this.listOfSongs = this.adder.delete(song);
+    this.listOfSongs = this.addService.delete(song);
   }
 }

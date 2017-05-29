@@ -1,7 +1,7 @@
+import { DetailsService } from './../services/song-details.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Song } from '../models/index';
 import { FormControl, FormGroup,AbstractControl,Validators,FormBuilder} from '@angular/forms';
-import { DetailsService } from '../services/song-details.service';
 import { ReflectiveInjector, Inject } from '@angular/core';
 
 
@@ -18,19 +18,14 @@ export class SongDetailsComponent implements OnInit {
   @Output()
   clickEmitter: EventEmitter<Song> = new EventEmitter();
 
-  det: DetailsService;
-
-  constructor() {
-    const injector = ReflectiveInjector.resolveAndCreate([DetailsService]);
-    this.det = injector.get(DetailsService);
-  }
+  constructor(private detailsService:DetailsService) { }
 
   ngOnInit() {
   }
 
   userSelected(name){
     
-  this.det.details(name)
+  this.detailsService.details(name)
 
   this.clickEmitter.emit(this.name);
  }

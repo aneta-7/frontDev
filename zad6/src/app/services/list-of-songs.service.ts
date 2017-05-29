@@ -33,21 +33,21 @@ export class AddService{
 }
 
 const SONGS: Song[]=[{
-        id:0,
-        title: "Human",
-        performer: "Rag'n'Bone Man",
-        publishing: "Sony Music Entertainment",
-        type: "Pop & Rock",
-        year: 2015,
-        showDetails: false,
-        isEdit:false
+    id:0,
+    title: "Human",
+    performer: "Rag'n'Bone Man",
+    publishing: "Sony Music Entertainment",
+    type: "Pop & Rock",
+    year: 2015,
+    showDetails: false,
+    isEdit:false
 },{
-        id:1,
-        title: "Chodź pomaluj mój świat",
-        performer: "Dwa plus jeden",
-        publishing: "Warner Music Poland",
-        type: "Pop & Rock",
-        year: 1970,
-        showDetails: false,
-        isEdit:false
+    id:1,
+    title: "Chodź pomaluj mój świat",
+    performer: "Dwa plus jeden",
+    publishing: "Warner Music Poland",
+    type: "Pop & Rock",
+    year: 1970,
+    showDetails: false,
+    isEdit:false
 }]

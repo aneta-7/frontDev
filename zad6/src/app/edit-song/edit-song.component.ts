@@ -1,7 +1,7 @@
+import { EditService } from './../services/edit-song.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Song } from '../models/index';
 import { FormControl, FormGroup,AbstractControl,Validators,FormBuilder} from '@angular/forms';
-import { Edit } from '../services/edit-song.service';
 import { ReflectiveInjector, Inject } from '@angular/core';
 
 
@@ -24,12 +24,7 @@ export class EditSongComponent implements OnInit {
   type: AbstractControl;
   year: AbstractControl;
 
-  editer: Edit;
-
-  constructor(fb: FormBuilder) {
-
-    const injector = ReflectiveInjector.resolveAndCreate([Edit]);
-    this.editer = injector.get(Edit);
+  constructor(fb: FormBuilder, private editService: EditService) {
 
      this.mySong = fb.group({
       'title': ['', Validators.required],
@@ -71,9 +66,6 @@ export class EditSongComponent implements OnInit {
   }
 
   saveChange(value: any){
-    this.editer.save(this.nameSong, value);
+    this.editService.save(this.nameSong, value);
   }
-
-  
-
 }
