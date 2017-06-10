@@ -1,12 +1,5 @@
-<!-- list all -->
-<div *ngFor= "let song of listOfSongs">
-    <app-song-details 
-    [name]="song" 
-    (clickEmitter)="userClicked($event)">
-    </app-song-details>
-    <button (click)="delete(song)">Delete</button>
-</div>
 <!-- create new song -->
+
 <br>
 <h3>Add new song </h3>
 
@@ -41,6 +34,17 @@
     <button type="submit">Search</button>
 </form>
 
+<br><br>
+
+<!-- list all -->
+<div *ngFor= "let song of listOfSongs">
+    <app-song-details 
+    [name]="song" 
+    (clickEmitter)="userClicked($event)">
+    </app-song-details>
+    <button (click)="delete(song)">Delete</button>
+</div>
+
 <!-- search result -->
 Result:
 <ul>
@@ -49,4 +53,4 @@ Result:
     (clickEmitter)="userClicked($event)"></app-song-details>
 </ul>
 
-<br><br>
+
